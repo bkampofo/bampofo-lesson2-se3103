@@ -11,9 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 
+import Controller.App;
 import Controller.CoinTypeButtonListener;
 import Controller.InsertButtonListener;
 import Controller.RemoveButtonListener;
+import Model.CoinDispenser;
 
 public class AppWindow extends JFrame{
 
@@ -39,9 +41,13 @@ public class AppWindow extends JFrame{
         // 3 radion buttons for coin types
         JPanel coinTypePanel = new JPanel();
         coinTypePanel.setBorder(new TitledBorder("Coin Type"));
+        int selectedIndex = App.CoinDispenser.selectedSlotIndex;
         JRadioButton nickelButton = new JRadioButton(radioButtonActionNickel);
+            selectedIndex = CoinDispenser.SLOY_NICKELS;
         JRadioButton dimeButton = new JRadioButton(radioButtonActionDime);
+            selectedIndex = CoinDispenser.SLOY_DIMES;
         JRadioButton quarterButton = new JRadioButton(radioButtonActionQuarter);
+            selectedIndex = CoinDispenser.SLOY_QUARTERS;
         ButtonGroup coinGroup = new ButtonGroup();
         coinGroup.add(nickelButton);
         coinGroup.add(dimeButton);

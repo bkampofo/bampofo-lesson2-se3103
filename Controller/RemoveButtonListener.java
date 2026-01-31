@@ -15,7 +15,9 @@ public class RemoveButtonListener implements ActionListener{
         CoinDispenser coinDispenser = App.CoinDispenser;
         int selectedIndex = coinDispenser.selectedSlotIndex;
         assert 0 <= selectedIndex && selectedIndex <= 2 : "Invalid slot index selected";
+        assert coinDispenser.getSlot(selectedIndex).size() > 0 : "Selected slot is empty";
         coinDispenser.getSlot(selectedIndex).pop();
+        App.win.updateWindow();
 }
 
     

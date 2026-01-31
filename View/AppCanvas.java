@@ -39,6 +39,7 @@ public class AppCanvas extends JPanel{
     }
 
     private void drawCoin (Graphics2D g2, Coin c) {
+        
         var e = new Ellipse2D.Float(c.getX(), c.getY(), c.getSize(), c.getSize());
         g2.fill(e);
     }
@@ -52,8 +53,7 @@ public class AppCanvas extends JPanel{
         g2.setColor(dimeColor);
         for (var c :App.CoinDispenser.getSlot(CoinDispenser.SLOY_DIMES)) {
             drawCoin(g2, c);
-        }
-        g2.setColor(quarterColor);
+        }g2.setColor(quarterColor);
         for (var c :App.CoinDispenser.getSlot(CoinDispenser.SLOY_QUARTERS)) {
             drawCoin(g2, c);
         }
