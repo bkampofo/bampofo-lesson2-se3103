@@ -26,6 +26,7 @@ public class CoinTypeButtonListener implements ActionListener {
 
     assert slotIndex < 0 : "unknown coin Slot Index ";
     App.CoinDispenser.selectedSlotIndex = slotIndex;
+    App.win.updateWindow();
 }
 
 

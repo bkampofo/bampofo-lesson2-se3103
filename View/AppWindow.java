@@ -27,6 +27,8 @@ public class AppWindow extends JFrame{
 
 
     private AppCanvas canvas = new AppCanvas();
+    private JButton insertButton;
+    private JButton removeButton;
 
 
     public void init() {
@@ -66,8 +68,8 @@ public class AppWindow extends JFrame{
         // B Button for insert and remove
         JPanel actionPanel = new JPanel();
         actionPanel.setBorder(new TitledBorder("Action"));
-        JButton insertButton = new JButton(radioButtonActionInsert);
-        JButton removeButton = new JButton(radioButtonActionRemoveove);
+        insertButton = new JButton(radioButtonActionInsert);
+        removeButton = new JButton(radioButtonActionRemoveove);
         actionPanel.add(insertButton);
         actionPanel.add(removeButton);
         southPanel.add(actionPanel);
@@ -76,12 +78,35 @@ public class AppWindow extends JFrame{
         RemoveButtonListener removeButtonListener = new RemoveButtonListener();
         insertButton.addActionListener(insertButtonListener);
         removeButton.addActionListener(removeButtonListener);
+
+        updateWindow();
         
 
     }
 
     public void updateWindow() {
         //updade components if needed
+        int selectedIndex = App.CoinDispenser.selectedSlotIndex;
+        int coinCount = 0;
+        int maxAllowed = 0;
+        switch (selectedIndex) {
+            case CoinDispenser.SLOY_NICKELS:
+                coinCount = App.CoinDispenser.getNickelCount();
+                maxAllowed = App.CoinDispenser.maxNickels;
+                break;
+            case CoinDispenser.SLOY_DIMES:
+                coinCount = App.CoinDispenser.getDimeCount();
+                maxAllowed = App.CoinDispenser.maxDimes;
+                break;
+            case CoinDispenser.SLOY_QUARTERS:
+                coinCount = App.CoinDispenser.getQuarterCount();
+                maxAllowed = App.CoinDispenser.maxQuarters;
+                break;
+        }
+
+        insertButton.setEnabled(coinCount < maxAllowed);
+        removeButton.setEnabled(coinCount > 0);
+        
         canvas.repaint();
 
     }

@@ -20,18 +20,21 @@ public class InsertButtonListener implements ActionListener {
         int x = 0;
         int y = 0;
         if (selectedIndex == CoinDispenser.SLOY_NICKELS) {
+            assert CoinDispenser.getNickelCount() < CoinDispenser.maxNickels : "Nickel slot full";
             newCoin = new Nickel();
             x = AppCanvas.X_SLOT
             + CoinDispenser.getNickelCount() * (Nickel.SIZE + 10);
 
             y = AppCanvas.Y_NICKELS;
         } else if (selectedIndex == CoinDispenser.SLOY_DIMES) {
+            assert CoinDispenser.getDimeCount() < CoinDispenser.maxDimes : "Dime slot full";
             newCoin = new Dime();
             x = AppCanvas.X_SLOT
             + CoinDispenser.getDimeCount() * (Dime.SIZE + 10);
 
             y = AppCanvas.Y_DIMES;
         } else if (selectedIndex == CoinDispenser.SLOY_QUARTERS) {
+            assert CoinDispenser.getQuarterCount() < CoinDispenser.maxQuarters : "Quarter slot full";   
             newCoin = new Quarter();
             x = AppCanvas.X_SLOT
             + CoinDispenser.getQuarterCount() * (Quarter.SIZE + 10);
